@@ -5,3 +5,5 @@ c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGam
 c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\obj\x86\Debug\MathGame!.pdb
 c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont1.xnb
 c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont2.xnb
+C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\obj\x86\Debug\MathGame!.csprojResolveAssemblyReference.cache
+C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\arrow.xnb

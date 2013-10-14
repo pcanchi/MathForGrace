@@ -20,12 +20,16 @@ namespace MathGame_
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteBatch sp2;
+        Texture2D arrow;
+        Vector2 arrowpos = Vector2.Zero;
         private SpriteFont number_font;
         private SpriteFont end_round_font;
         KinectSensor kinect;
         Skeleton[] skeletonData;
         Skeleton skeleton;
 
+        String cat = "";
+        String cur = "divide";
         float currHandx = 0;
         float currHandy = 0;
         bool start = true;
@@ -40,7 +44,7 @@ namespace MathGame_
         int answer_choice_count = 0; //counter for displaying possible answers
         int correct_answer_slot; //this tells us which choice will be the correct answer
         int selected_answer; //we need to set this value once we detect a hand raise
-       
+        
         int current_answer_displayed;
         int question_count = 0;
         int correct_answer_count = 0;
@@ -69,6 +73,7 @@ namespace MathGame_
         {
             currHandx = positionFrom.X;
             currHandy = positionFrom.Y;
+            Console.WriteLine(currHandy);
         }
 
         private void TrackBone(Joint jointFrom, Joint jointTo)
@@ -139,6 +144,7 @@ namespace MathGame_
             sp2 = new SpriteBatch(GraphicsDevice);
             number_font = Content.Load<SpriteFont>("SpriteFont1");
             end_round_font = Content.Load<SpriteFont>("SpriteFont2");
+            arrow = Content.Load<Texture2D>("arrow");
             // TODO: use this.Content to load your game content here
         }
 
@@ -195,16 +201,76 @@ namespace MathGame_
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            if (start)
+            if (cat == "")
             {
+                this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
                 sp2.Begin();
-                sp2.DrawString(end_round_font, "Starting Round 1", new Vector2(100, 10), Color.DarkGreen);
+                sp2.DrawString(end_round_font, "Please select a category", new Vector2(100, 0), Color.DarkGreen);
+                if (cur == "divide")
+                {
+                    cur = "add";
+                    sp2.DrawString(end_round_font, "Addition", new Vector2(100, 100), Color.Yellow);
+                    sp2.DrawString(end_round_font, "Subtraction", new Vector2(500, 100), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Multiplication", new Vector2(100, 300), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Division", new Vector2(500, 300), Color.DarkGreen);
+                    if (currHandy >= 0.15)
+                    {
+                        cat = cur;
+                    }
+                }
+
+                else if (cur == "add")
+                {
+                    cur = "subtract";
+                    sp2.DrawString(end_round_font, "Addition", new Vector2(100, 100), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Subtraction", new Vector2(500, 100), Color.Yellow);
+                    sp2.DrawString(end_round_font, "Multiplication", new Vector2(100, 300), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Division", new Vector2(500, 300), Color.DarkGreen);
+                    if (currHandy >= 0.15)
+                    {
+                        cat = cur;
+                    }
+                }
+
+                else if (cur == "subtract")
+                {
+                    cur = "multiply";
+                    sp2.DrawString(end_round_font, "Addition", new Vector2(100, 100), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Subtraction", new Vector2(500, 100), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Multiplication", new Vector2(100, 300), Color.Yellow);
+                    sp2.DrawString(end_round_font, "Division", new Vector2(500, 300), Color.DarkGreen);
+                    if (currHandy >= 0.15)
+                    {
+                        cat = cur;
+                    }
+                }
+
+                else if (cur == "multiply")
+                {
+                    cur = "divide";
+                    sp2.DrawString(end_round_font, "Addition", new Vector2(100, 100), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Subtraction", new Vector2(500, 100), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Multiplication", new Vector2(100, 300), Color.DarkGreen);
+                    sp2.DrawString(end_round_font, "Division", new Vector2(500, 300), Color.Yellow);
+                    if (currHandy >= 0.15)
+                    {
+                        cat = cur;
+                    }
+                }
                 sp2.End();
-                start = false;
             }
 
+            else if (start)
+            {
+                sp2.Begin();
+                sp2.DrawString(end_round_font, "You Chose " + cat, new Vector2(0, 10), Color.Yellow);
+                sp2.DrawString(end_round_font, "Starting Round 1", new Vector2(100, 100), Color.DarkGreen);
+                sp2.End();
+                start = false;
+                //this.TargetElapsedTime = TimeSpan.FromSeconds(100.0f / 100.0f);
+            }
 
-            if (question_count < 3 && firstnumstring != "")
+            else if (question_count < 1 && firstnumstring != "")
             {
                 sp2.Begin();
                 sp2.DrawString(number_font, firstnumstring, new Vector2(100, 10), Color.Black);
@@ -214,9 +280,10 @@ namespace MathGame_
                 sp2.DrawString(number_font, "?", new Vector2(700, 10), Color.Black);
                 sp2.End();
             }
-            if ((time_flag1 == true) && (answer_flag == false))
+            
+            if((time_flag1 == true) && (answer_flag == false) && cat != "")
             {
-                if (question_count < 3)
+                if (question_count < 1)
                 {
                     //Random number generation for equations
                     Random r1 = new Random();
@@ -265,7 +332,7 @@ namespace MathGame_
                     question_count = 0;
                 }
             }
-            else if ((time_flag1 == true) && (answer_flag == true))
+            else if ((time_flag1 == true) && (answer_flag == true) && cat != "")
             {
                 if (answer_choice_count == 4)
                 {

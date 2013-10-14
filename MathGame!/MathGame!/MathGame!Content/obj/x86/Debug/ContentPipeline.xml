@@ -7,7 +7,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
       <Time>2013-10-07T17:09:21.422898-04:00</Time>
     </Item>
     <Item>
@@ -16,8 +16,17 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont2.xnb</Output>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont2.xnb</Output>
       <Time>2013-10-07T17:09:50.270481-04:00</Time>
+    </Item>
+    <Item>
+      <Source>arrow.jpg</Source>
+      <Name>arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\arrow.xnb</Output>
+      <Time>2013-10-14T10:53:03.9126119-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -25,10 +34,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\</RootDirectory>
-      <LoggerRootDirectory>c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\</LoggerRootDirectory>
-      <IntermediateDirectory>c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>c:\users\pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
