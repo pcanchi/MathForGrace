@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\logo.xnb</Output>
-      <Time>2013-11-16T17:53:05.1534606-05:00</Time>
+      <Time>2013-11-23T17:44:26.4833487-05:00</Time>
     </Item>
     <Item>
       <Source>category.png</Source>
@@ -198,6 +198,15 @@
       <Options>None</Options>
       <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\reset.xnb</Output>
       <Time>2013-11-23T13:38:07.6677616-05:00</Time>
+    </Item>
+    <Item>
+      <Source>please.png</Source>
+      <Name>please</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\please.xnb</Output>
+      <Time>2013-11-23T17:26:36.9084591-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -1,7 +1,3 @@
-
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,60 +21,69 @@ namespace MathGame_
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
+        // These variables are used to display text and images on the screen.
         SpriteBatch spriteBatch;
         SpriteBatch sp2;
-        Texture2D arrow;
-        Vector2 arrowpos = Vector2.Zero;
         private SpriteFont number_font;
         private SpriteFont end_round_font;
         private SpriteFont eq;
         private SpriteFont countdown_font;
+        Texture2D card, art, red, green, select, option, logo, felt, menu, options, arrow;
+
+        // These variables are used to handle kinect sensor data.
         KinectSensor kinect;
         Skeleton[] skeletonData;
-        Texture2D card, art, red, green, select, option, logo, felt, menu, options;
+        
+        // Thest variables are used to load and play audio durin the course of the game.
         AudioEngine audioEngine;
         WaveBank waveBank;
         SoundBank soundBank;
         SoundEffect soundEngine, soundEngine2, soundEngine3, soundEngine4, soundEngine5, soundEngine6;
         SoundEffectInstance click, qright, qwrong, pass_r, fail_r, reset_m;
         
-
-        String cat = "none";
-        String cur = "none";
+        // These variables deal with calibration and tracking of the user's right wrist.
         float currHandx = 0;
         float currHandy = 0;
         float currHandz = 0;
-        bool start = true;
+        float yLow, yHigh;
+        float cali = 99999;
+        
         float timer = 5;
         const float TIMERCLOCK1 = 3;
         const float TIMERCLOCK2 = 3;
-        float yLow, yHigh;
-        float cali = 99999;
-
+        
         bool time_flag1 = true; //initialized to true, will work like an on/off switch
         bool answer_flag = false; //initialized to false, will work like an on/off switch
+        bool game_over_flag = false;
+        bool answer_chosen = false;
+        
+        //These variables handle the math logic of the game.
         int correct_answer; //set this global value everytime equation generated
-        //int answer_choice_count = 0; //counter for displaying possible answers
         int correct_answer_slot; //this tells us which choice will be the correct answer
         int selected_answer = -1; //we need to set this value once we detect a hand raise
-
         int current_answer_displayed = -1;
         int question_count = 0;
         int correct_answer_count = 0;
-        bool game_over_flag = false;
-        bool answer_chosen = false;
+        int ans1, ans2, ans3, ans4;
+        
+        // The following strings are used to track the current state of the game.
         string firstnumstring = "";
         string secondnumstring = "";
         string choice = "";
         string lost = "e";
-        int num_questions = 3;
-        int pass = 2;
+        String cat = "none";
+        String cur = "none";
+        string menuop = "none";
+        string sop = "none";
+        
+        // The following integers are used to track and maintain round logic.
+        int num_questions = 10;
+        int pass = 7;
         int roundNum = 1;
-        int ans1;
-        int ans2;
-        int ans3;
-        int ans4;
         int addnum, subnum, mulnum, divnum;
+
+        // The following list of booleans are used to transition through the different states of the game.
+        bool start = true;
         bool restart = false;
         bool decision = false;
         bool answer_key_chosen = false;
@@ -88,13 +93,13 @@ namespace MathGame_
         bool calibrated = false;
         bool gomain = false;
         bool settings = false;
-        int count = 5;
         bool up = false;
         bool scorescreen = false;
-        string menuop = "none";
-        string sop = "none";
+        bool catchosen = false;
 
-
+        int count = 5;
+        
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -164,7 +169,7 @@ namespace MathGame_
         {
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) // Open the Skeleton frame
             {
-                // Console.WriteLine("here");
+                
                 if (skeletonFrame != null && this.skeletonData != null) // check that a frame is available
                 {
                     
@@ -224,7 +229,7 @@ namespace MathGame_
             green = Content.Load<Texture2D>("green");
             logo = Content.Load<Texture2D>("logo");
             option = Content.Load<Texture2D>("art");
-            select = Content.Load<Texture2D>("category");
+            select = Content.Load<Texture2D>("please");
             felt = Content.Load<Texture2D>("felt");
             menu = Content.Load<Texture2D>("menu");
             options = Content.Load<Texture2D>("options");
@@ -273,7 +278,7 @@ namespace MathGame_
                 calibrated = true;
                 gomain = true;
                 cali = (yLow + yHigh) / (float)2.0;
-                //Console.WriteLine(cali);
+                
             }
 
             // Allows the game to exit
@@ -342,7 +347,7 @@ namespace MathGame_
                 current_answer_displayed = -1;
             }
 
-            else if (currHandy >= cali && decision == true && hdown && calibrated && !gomain)
+            else if (currHandy >= cali && decision == true && hdown && calibrated && !gomain && catchosen)
             {
                 click.Play();
                 hdown = false;
@@ -350,6 +355,7 @@ namespace MathGame_
                 {
                     restart = true;
                     gomain = true;
+                    catchosen = false;
                     calibrated = true;
                     decision = false;
                     question_count = 0;
@@ -404,10 +410,11 @@ namespace MathGame_
                 lost = "e";
             }
 
-            else if (currHandy >= cali && hdown && calibrated && !gomain)
+            else if (currHandy >= cali && hdown && calibrated && !gomain && !catchosen)
             {
                 click.Play();
                 hdown = false;
+                catchosen = true;
                 restart = false;
                 once = false;
                 cat = cur;
@@ -422,7 +429,7 @@ namespace MathGame_
                     roundNum = divnum;
             }
 
-            else if (currHandy >= cali && gomain && hdown && !settings && !scorescreen)
+            else if (currHandy >= cali && gomain && hdown && !settings && !scorescreen && calibrated)
             {
                 hdown = false;
                 click.Play();
@@ -455,7 +462,7 @@ namespace MathGame_
                 menuop = "e";
             }
 
-            else if (currHandy >= cali && gomain && hdown && settings && !scorescreen)
+            else if (currHandy >= cali && gomain && hdown && settings && !scorescreen && calibrated)
             {
                 click.Play();
                 hdown = false;
@@ -481,7 +488,7 @@ namespace MathGame_
                 sop = "b";
             }
 
-            else if (currHandy >= cali && gomain && hdown && !settings && scorescreen)
+            else if (currHandy >= cali && gomain && hdown && !settings && scorescreen && calibrated)
             {
                 settings = true;
                 scorescreen = false;
@@ -661,10 +668,10 @@ namespace MathGame_
 
                 if ((cat == "none") || (restart == true))
                 {
-                    //Console.WriteLine(currHandy);
+                    
 
                     sp2.Begin();
-                    sp2.Draw(select, new Vector2(200, 10), Color.White);
+                    sp2.Draw(select, new Vector2(200, 10), Color.Black);
                     sp2.Draw(option, new Vector2(215, 200), Color.Navy);
                     sp2.Draw(option, new Vector2(660, 200), Color.Navy);
                     sp2.Draw(option, new Vector2(215, 400), Color.Navy);
@@ -730,45 +737,64 @@ namespace MathGame_
                 else if (question_count < num_questions && firstnumstring != "" && roundNum <= 10)
                 {
                     int x1, x2;
+                    bool symchange = false;
                     if (firstnumstring.Length == 1)
                         x1 = 375;
-                    else
+                    else if (firstnumstring.Length == 2)
                         x1 = 250;
+                    else
+                        x1 = 150;
 
                     if (secondnumstring.Length == 1)
                         x2 = 375;
-                    else
+                    else if (secondnumstring.Length == 2)
                         x2 = 250;
+                    else
+                    {
+                        x2 = 150;
+                        symchange = true;
+                    }
                     sp2.Begin();
                     sp2.Draw(card, new Vector2(100, 100), Color.White);
                     if (cat == "Addition")
                     {
                         sp2.DrawString(number_font, firstnumstring, new Vector2(x1, 100), Color.Black);
-                        sp2.DrawString(number_font, "+", new Vector2(125, 300), Color.Black);
+                        if (!symchange)
+                            sp2.DrawString(number_font, "+", new Vector2(125, 300), Color.Black);
+                        else
+                            sp2.DrawString(eq, "+", new Vector2(100, 250), Color.Black);
                         sp2.DrawString(number_font, secondnumstring, new Vector2(x2, 300), Color.Black);
-                        //   sp2.DrawString(number_font, "=", new Vector2(900, 10), Color.Black);
                         sp2.DrawString(eq, "?", new Vector2(275, 525), Color.Black);
                     }
                     else if (cat == "Subtraction")
                     {
                         sp2.DrawString(number_font, firstnumstring, new Vector2(x1, 100), Color.Black);
-                        sp2.DrawString(number_font, "-", new Vector2(125, 300), Color.Black);
+                        if (!symchange)
+                            sp2.DrawString(number_font, "-", new Vector2(125, 300), Color.Black);
+                        else
+                            sp2.DrawString(eq, "-", new Vector2(100, 250), Color.Black);
                         sp2.DrawString(number_font, secondnumstring, new Vector2(x2, 300), Color.Black);
-                        //    sp2.DrawString(number_font, "=", new Vector2(900, 10), Color.Black);
+                        
                         sp2.DrawString(eq, "?", new Vector2(275, 525), Color.Black);
                     }
                     else if (cat == "Multiplication")
                     {
                         sp2.DrawString(number_font, firstnumstring, new Vector2(x1, 100), Color.Black);
-                        sp2.DrawString(number_font, "x", new Vector2(125, 300), Color.Black);
+                        if (!symchange)
+                            sp2.DrawString(number_font, "x", new Vector2(125, 300), Color.Black);
+                        else
+                            sp2.DrawString(eq, "x", new Vector2(100, 250), Color.Black);
                         sp2.DrawString(number_font, secondnumstring, new Vector2(x2, 300), Color.Black);
-                        //     sp2.DrawString(number_font, "=", new Vector2(900, 10), Color.Black);
+                        
                         sp2.DrawString(eq, "?", new Vector2(275, 525), Color.Black);
                     }
                     else if (cat == "Division")
                     {
                         sp2.DrawString(number_font, firstnumstring, new Vector2(x1, 100), Color.Black);
-                        sp2.DrawString(number_font, "/", new Vector2(125, 300), Color.Black);
+                        if (!symchange)
+                            sp2.DrawString(number_font, "/", new Vector2(125, 300), Color.Black);
+                        else
+                            sp2.DrawString(eq, "/", new Vector2(100, 250), Color.Black);
                         sp2.DrawString(number_font, secondnumstring, new Vector2(x2, 300), Color.Black);
                         //  sp2.DrawString(number_font, "=", new Vector2(900, 10), Color.Black);
                         sp2.DrawString(eq, "?", new Vector2(275, 525), Color.Black);
