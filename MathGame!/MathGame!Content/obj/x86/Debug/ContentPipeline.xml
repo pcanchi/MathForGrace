@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>SpriteFont1.spritefont</Source>
+      <Name>SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
+      <Time>2013-11-12T21:49:58.6450968-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont2.spritefont</Source>
+      <Name>SpriteFont2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont2.xnb</Output>
+      <Time>2013-10-07T17:09:50.270481-04:00</Time>
+    </Item>
+    <Item>
+      <Source>arrow.jpg</Source>
+      <Name>arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\arrow.xnb</Output>
+      <Time>2013-10-14T10:53:03.9126119-04:00</Time>
+    </Item>
+    <Item>
+      <Source>card.png</Source>
+      <Name>card</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\card.xnb</Output>
+      <Time>2013-11-12T21:39:15.4452383-05:00</Time>
+    </Item>
+    <Item>
+      <Source>art.png</Source>
+      <Name>art</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\art.xnb</Output>
+      <Time>2013-11-22T15:03:12.2871197-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont3.spritefont</Source>
+      <Name>SpriteFont3</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont3.xnb</Output>
+      <Time>2013-11-12T21:53:46.04533-05:00</Time>
+    </Item>
+    <Item>
+      <Source>icon.png</Source>
+      <Name>icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\Visual Studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\icon.xnb</Output>
+      <Time>2013-11-13T10:28:01.6566503-05:00</Time>
+    </Item>
+    <Item>
+      <Source>green.png</Source>
+      <Name>green</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\Visual Studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\green.xnb</Output>
+      <Time>2013-11-13T10:59:49.2753949-05:00</Time>
+    </Item>
+    <Item>
+      <Source>red.jpg</Source>
+      <Name>red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\Visual Studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\red.xnb</Output>
+      <Time>2013-11-13T10:59:56.0413351-05:00</Time>
+    </Item>
+    <Item>
+      <Source>logo.png</Source>
+      <Name>logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\logo.xnb</Output>
+      <Time>2013-11-16T17:53:05.1534606-05:00</Time>
+    </Item>
+    <Item>
+      <Source>category.png</Source>
+      <Name>category</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\category.xnb</Output>
+      <Time>2013-11-16T19:52:11.6625014-05:00</Time>
+    </Item>
+    <Item>
+      <Source>loading.jpg</Source>
+      <Name>loading</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\loading.xnb</Output>
+      <Time>2013-11-16T20:29:51.5862512-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont4.spritefont</Source>
+      <Name>SpriteFont4</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont4.xnb</Output>
+      <Time>2013-11-22T15:02:02.2709279-05:00</Time>
+    </Item>
+    <Item>
+      <Source>felt.png</Source>
+      <Name>felt</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\felt.xnb</Output>
+      <Time>2013-11-22T15:18:36.1824449-05:00</Time>
+    </Item>
+    <Item>
+      <Source>menu.png</Source>
+      <Name>menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\menu.xnb</Output>
+      <Time>2013-11-22T15:33:41.3841386-05:00</Time>
+    </Item>
+    <Item>
+      <Source>options.png</Source>
+      <Name>options</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\options.xnb</Output>
+      <Time>2013-11-22T16:23:21.0105843-05:00</Time>
+    </Item>
+    <Item>
+      <Source>question_correct.wav</Source>
+      <Name>question_correct</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\question_correct.xnb</Output>
+      <Time>2013-11-22T17:28:00.4358936-05:00</Time>
+    </Item>
+    <Item>
+      <Source>question_wrong.wav</Source>
+      <Name>question_wrong</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\question_wrong.xnb</Output>
+      <Time>2013-11-22T17:28:18.2356264-05:00</Time>
+    </Item>
+    <Item>
+      <Source>round_fail.wav</Source>
+      <Name>round_fail</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\round_fail.xnb</Output>
+      <Time>2013-11-22T17:28:29.4392729-05:00</Time>
+    </Item>
+    <Item>
+      <Source>round_pass.wav</Source>
+      <Name>round_pass</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\round_pass.xnb</Output>
+      <Time>2013-11-22T17:28:36.2052173-05:00</Time>
+    </Item>
+    <Item>
+      <Source>click1.wav</Source>
+      <Name>click1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\click1.xnb</Output>
+      <Time>2013-11-22T17:28:52.9560077-05:00</Time>
+    </Item>
+    <Item>
+      <Source>reset.wav</Source>
+      <Name>reset</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\reset.xnb</Output>
+      <Time>2013-11-23T13:38:07.6677616-05:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-09-18T16:13:13.6120375-04:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
