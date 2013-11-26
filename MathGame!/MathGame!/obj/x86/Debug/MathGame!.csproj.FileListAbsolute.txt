@@ -56,3 +56,8 @@ C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\obj\x86\Debug\M
 C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\obj\x86\Debug\MathGame!.exe
 C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\obj\x86\Debug\MathGame!.pdb
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\MathGame!.exe.manifest
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\MathGame!.application
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\obj\x86\Debug\MathGame!.exe.manifest
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\obj\x86\Debug\MathGame!.application
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont5.xnb

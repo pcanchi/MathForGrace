@@ -29,7 +29,7 @@ namespace MathGame_
         SpriteBatch sp2;
         private SpriteFont number_font;
         private SpriteFont end_round_font;
-        private SpriteFont eq;
+        private SpriteFont eq, p_font;
         private SpriteFont countdown_font;
         Texture2D card, art, red, green, select, option, logo, felt, menu, options, arrow;
 
@@ -249,13 +249,23 @@ namespace MathGame_
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            kinect = KinectSensor.KinectSensors[0];
-            kinect.SkeletonStream.Enable();
-            kinect.SkeletonStream.TrackingMode = SkeletonTrackingMode.Seated;
-            skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength];
-            kinect.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinect_SkeletonFrameReady);
-            kinect.Start();
-            kinect.ElevationAngle = 5;
+
+            try
+            {
+                kinect = KinectSensor.KinectSensors[0];
+                kinect.SkeletonStream.Enable();
+                kinect.SkeletonStream.TrackingMode = SkeletonTrackingMode.Seated;
+                skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength];
+                kinect.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinect_SkeletonFrameReady);
+                kinect.Start();
+                kinect.ElevationAngle = 5;
+           }
+
+            catch(ArgumentOutOfRangeException e)
+            {
+               this.Exit();
+            }
+            
             if (!(System.IO.File.Exists("state.txt")))
             {
                 var v = System.IO.File.Create("state.txt");
@@ -302,6 +312,7 @@ namespace MathGame_
             art = Content.Load<Texture2D>("icon");
             eq = Content.Load<SpriteFont>("SpriteFont3");
             countdown_font = Content.Load<SpriteFont>("SpriteFont4");
+            p_font = Content.Load<SpriteFont>("SpriteFont5");
             red = Content.Load<Texture2D>("red");
             green = Content.Load<Texture2D>("green");
             logo = Content.Load<Texture2D>("logo");
@@ -430,7 +441,7 @@ namespace MathGame_
 
             if (currHandy >= cali && cat != "none" && current_answer_displayed != -1 && hdown && calibrated && !gomain)
             {
-                click.Play();
+                //click.Play();
                 hdown = false;
                 selected_answer = current_answer_displayed;
                 answer_chosen = true;
@@ -649,9 +660,10 @@ namespace MathGame_
                 {
                     spriteBatch.Begin();
                     spriteBatch.Draw(menu, new Vector2(450, 0), Microsoft.Xna.Framework.Color.White);
-                    spriteBatch.Draw(option, new Vector2(450, 150), Microsoft.Xna.Framework.Color.Navy);
-                    spriteBatch.Draw(option, new Vector2(450, 350), Microsoft.Xna.Framework.Color.Navy);
-                    spriteBatch.Draw(option, new Vector2(450, 550), Microsoft.Xna.Framework.Color.Navy);
+                    spriteBatch.Draw(option, new Vector2(450, 150), Microsoft.Xna.Framework.Color.Red);
+                    spriteBatch.Draw(option, new Vector2(450, 350), Microsoft.Xna.Framework.Color.Purple);
+                    spriteBatch.Draw(option, new Vector2(450, 550), Microsoft.Xna.Framework.Color.White);
+                    
                     if (menuop == "none" || menuop == "e")
                     {
                         menuop = "s";
@@ -684,10 +696,10 @@ namespace MathGame_
                     this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
                     spriteBatch.Begin();
                     spriteBatch.Draw(options, new Microsoft.Xna.Framework.Rectangle(550, 0, 200, 100), Microsoft.Xna.Framework.Color.White);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 150, 400, 100), Microsoft.Xna.Framework.Color.Navy);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 150, 400, 100), Microsoft.Xna.Framework.Color.Navy);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 350, 400, 100), Microsoft.Xna.Framework.Color.Navy);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 350, 400, 100), Microsoft.Xna.Framework.Color.Navy);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 150, 400, 100), Microsoft.Xna.Framework.Color.Red);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 150, 400, 100), Microsoft.Xna.Framework.Color.LightPink);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 350, 400, 100), Microsoft.Xna.Framework.Color.Blue);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 350, 400, 100), Microsoft.Xna.Framework.Color.Purple);
                     //spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(450, 550, 420, 100), Microsoft.Xna.Framework.Color.Navy);
                     if (sop == "none" || sop == "b")
                     {
@@ -695,7 +707,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Yellow);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Back to Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -705,7 +717,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Yellow);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Back to Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -715,7 +727,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Yellow);
-                        spriteBatch.DrawString(end_round_font, "Back to Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -725,7 +737,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Back to Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Yellow);
+                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Yellow);
                         
                     }
 
@@ -805,11 +817,12 @@ namespace MathGame_
                     
 
                     sp2.Begin();
-                    sp2.Draw(select, new Vector2(200, 10), Microsoft.Xna.Framework.Color.Black);
-                    sp2.Draw(option, new Vector2(215, 200), Microsoft.Xna.Framework.Color.Navy);
-                    sp2.Draw(option, new Vector2(660, 200), Microsoft.Xna.Framework.Color.Navy);
-                    sp2.Draw(option, new Vector2(215, 400), Microsoft.Xna.Framework.Color.Navy);
-                    sp2.Draw(option, new Vector2(660, 400), Microsoft.Xna.Framework.Color.Navy);
+                    //sp2.Draw(select, new Vector2(200, 10), Microsoft.Xna.Framework.Color.White);
+                    sp2.DrawString(p_font, "Please Select a Category", new Vector2(180, 50), Microsoft.Xna.Framework.Color.Black);
+                    sp2.Draw(option, new Vector2(215, 200), Microsoft.Xna.Framework.Color.Red);
+                    sp2.Draw(option, new Vector2(660, 200), Microsoft.Xna.Framework.Color.LightPink);
+                    sp2.Draw(option, new Vector2(215, 400), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.Draw(option, new Vector2(660, 400), Microsoft.Xna.Framework.Color.Purple);
                     sp2.Draw(logo, new Vector2(450, 600), Microsoft.Xna.Framework.Color.White);
                     if (cur == "Division" || cur == "none")
                     {
@@ -1172,10 +1185,10 @@ namespace MathGame_
                         d = 900;
 
                     sp2.Begin();
-                    sp2.DrawString(end_round_font, "Round: ", new Vector2(0, 0), Microsoft.Xna.Framework.Color.Blue);
-                    sp2.DrawString(end_round_font, roundNum.ToString(), new Vector2(150, 0), Microsoft.Xna.Framework.Color.Yellow);
-                    sp2.DrawString(end_round_font, "Question: ", new Vector2(300, 0), Microsoft.Xna.Framework.Color.Blue);
-                    sp2.DrawString(end_round_font, (question_count + 1).ToString(), new Vector2(525, 0), Microsoft.Xna.Framework.Color.Yellow);
+                    sp2.DrawString(end_round_font, "Round: ", new Vector2(100, 0), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.DrawString(end_round_font, roundNum.ToString(), new Vector2(250, 0), Microsoft.Xna.Framework.Color.Yellow);
+                    sp2.DrawString(end_round_font, "Question: ", new Vector2(400, 0), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.DrawString(end_round_font, (question_count + 1).ToString(), new Vector2(625, 0), Microsoft.Xna.Framework.Color.Yellow);
                     sp2.Draw(art, new Vector2(600, 100), Microsoft.Xna.Framework.Color.Green);
                     sp2.Draw(art, new Vector2(900, 100), Microsoft.Xna.Framework.Color.Green);
                     sp2.Draw(art, new Vector2(600, 400), Microsoft.Xna.Framework.Color.Green);
@@ -1191,19 +1204,19 @@ namespace MathGame_
                             sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Yellow);
 
                         if (a2.Length < 3)
-                            sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Black);
 
                         if (a3.Length < 3)
-                            sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Black);
 
                         if (a4.Length < 3)
-                            sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Black);
                     }
 
                     else if (choice == ans2.ToString())
@@ -1211,9 +1224,9 @@ namespace MathGame_
                         choice = ans3.ToString();
                         current_answer_displayed = ans2;
                         if (a1.Length < 3)
-                            sp2.DrawString(number_font, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Black);
 
                         if (a2.Length < 3)
                             sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Yellow);
@@ -1221,14 +1234,14 @@ namespace MathGame_
                             sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Yellow);
 
                         if (a3.Length < 3)
-                            sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Black);
 
                         if (a4.Length < 3)
-                            sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Black);
 
                     }
 
@@ -1237,14 +1250,14 @@ namespace MathGame_
                         choice = ans4.ToString();
                         current_answer_displayed = ans3;
                         if (a1.Length < 3)
-                            sp2.DrawString(number_font, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Black);
 
                         if (a2.Length < 3)
-                            sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Black);
 
                         if (a3.Length < 3)
                             sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Yellow);
@@ -1252,9 +1265,9 @@ namespace MathGame_
                             sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Yellow);
 
                         if (a4.Length < 3)
-                            sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Black);
                     }
 
                     else if (choice == ans4.ToString())
@@ -1262,19 +1275,19 @@ namespace MathGame_
                         choice = ans1.ToString();
                         current_answer_displayed = ans4;
                         if (a1.Length < 3)
-                            sp2.DrawString(number_font, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans1.ToString(), new Vector2(a, 90), Microsoft.Xna.Framework.Color.Black);
 
                         if (a2.Length < 3)
-                            sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans2.ToString(), new Vector2(b, 90), Microsoft.Xna.Framework.Color.Black);
 
                         if (a3.Length < 3)
-                            sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(number_font, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Black);
                         else
-                            sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.DarkGreen);
+                            sp2.DrawString(eq, ans3.ToString(), new Vector2(c, 390), Microsoft.Xna.Framework.Color.Black);
 
                         if (a4.Length < 3)
                             sp2.DrawString(number_font, ans4.ToString(), new Vector2(d, 390), Microsoft.Xna.Framework.Color.Yellow);
