@@ -7,7 +7,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
       <Time>2013-11-12T21:49:58.6450968-05:00</Time>
     </Item>
     <Item>
@@ -16,8 +16,26 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont2.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont2.xnb</Output>
       <Time>2013-10-07T17:09:50.270481-04:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont3.spritefont</Source>
+      <Name>SpriteFont3</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont3.xnb</Output>
+      <Time>2013-11-12T21:53:46.04533-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont4.spritefont</Source>
+      <Name>SpriteFont4</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont4.xnb</Output>
+      <Time>2013-11-22T15:02:02.2709279-05:00</Time>
     </Item>
     <Item>
       <Source>arrow.jpg</Source>
@@ -25,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\arrow.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\arrow.xnb</Output>
       <Time>2013-10-14T10:53:03.9126119-04:00</Time>
     </Item>
     <Item>
@@ -34,26 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\card.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\card.xnb</Output>
       <Time>2013-11-12T21:39:15.4452383-05:00</Time>
-    </Item>
-    <Item>
-      <Source>art.png</Source>
-      <Name>art</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\art.xnb</Output>
-      <Time>2013-11-22T15:03:12.2871197-05:00</Time>
-    </Item>
-    <Item>
-      <Source>SpriteFont3.spritefont</Source>
-      <Name>SpriteFont3</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont3.xnb</Output>
-      <Time>2013-11-12T21:53:46.04533-05:00</Time>
     </Item>
     <Item>
       <Source>icon.png</Source>
@@ -61,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\Documents\Visual Studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\icon.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\icon.xnb</Output>
       <Time>2013-11-13T10:28:01.6566503-05:00</Time>
     </Item>
     <Item>
@@ -70,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\Documents\Visual Studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\green.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\green.xnb</Output>
       <Time>2013-11-13T10:59:49.2753949-05:00</Time>
     </Item>
     <Item>
@@ -79,17 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\Documents\Visual Studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\red.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\red.xnb</Output>
       <Time>2013-11-13T10:59:56.0413351-05:00</Time>
-    </Item>
-    <Item>
-      <Source>logo.png</Source>
-      <Name>logo</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\logo.xnb</Output>
-      <Time>2013-11-23T17:44:26.4833487-05:00</Time>
     </Item>
     <Item>
       <Source>category.png</Source>
@@ -97,7 +88,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\category.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\category.xnb</Output>
       <Time>2013-11-16T19:52:11.6625014-05:00</Time>
     </Item>
     <Item>
@@ -106,17 +97,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\loading.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\loading.xnb</Output>
       <Time>2013-11-16T20:29:51.5862512-05:00</Time>
     </Item>
     <Item>
-      <Source>SpriteFont4.spritefont</Source>
-      <Name>SpriteFont4</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Source>art.png</Source>
+      <Name>art</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\SpriteFont4.xnb</Output>
-      <Time>2013-11-22T15:02:02.2709279-05:00</Time>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\art.xnb</Output>
+      <Time>2013-11-22T15:03:12.2871197-05:00</Time>
     </Item>
     <Item>
       <Source>felt.png</Source>
@@ -124,7 +115,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\felt.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\felt.xnb</Output>
       <Time>2013-11-22T15:18:36.1824449-05:00</Time>
     </Item>
     <Item>
@@ -133,7 +124,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\menu.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\menu.xnb</Output>
       <Time>2013-11-22T15:33:41.3841386-05:00</Time>
     </Item>
     <Item>
@@ -142,8 +133,26 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\options.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\options.xnb</Output>
       <Time>2013-11-22T16:23:21.0105843-05:00</Time>
+    </Item>
+    <Item>
+      <Source>please.png</Source>
+      <Name>please</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\please.xnb</Output>
+      <Time>2013-11-23T17:26:36.9084591-05:00</Time>
+    </Item>
+    <Item>
+      <Source>logo.png</Source>
+      <Name>logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\logo.xnb</Output>
+      <Time>2013-11-23T17:44:26.4833487-05:00</Time>
     </Item>
     <Item>
       <Source>question_correct.wav</Source>
@@ -151,7 +160,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\question_correct.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\question_correct.xnb</Output>
       <Time>2013-11-22T17:28:00.4358936-05:00</Time>
     </Item>
     <Item>
@@ -160,7 +169,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\question_wrong.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\question_wrong.xnb</Output>
       <Time>2013-11-22T17:28:18.2356264-05:00</Time>
     </Item>
     <Item>
@@ -169,7 +178,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\round_fail.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\round_fail.xnb</Output>
       <Time>2013-11-22T17:28:29.4392729-05:00</Time>
     </Item>
     <Item>
@@ -178,7 +187,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\round_pass.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\round_pass.xnb</Output>
       <Time>2013-11-22T17:28:36.2052173-05:00</Time>
     </Item>
     <Item>
@@ -187,7 +196,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\click1.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\click1.xnb</Output>
       <Time>2013-11-22T17:28:52.9560077-05:00</Time>
     </Item>
     <Item>
@@ -196,17 +205,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\reset.xnb</Output>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\reset.xnb</Output>
       <Time>2013-11-23T13:38:07.6677616-05:00</Time>
-    </Item>
-    <Item>
-      <Source>please.png</Source>
-      <Name>please</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\please.xnb</Output>
-      <Time>2013-11-23T17:26:36.9084591-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -214,10 +214,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

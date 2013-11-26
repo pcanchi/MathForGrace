@@ -1,1 +1,2 @@
 C:\Users\Pawan\documents\visual studio 2010\Projects\MathGame!\MathGame!\MathGame!Content\obj\x86\Debug\MathGame!Content.contentprojResolveAssemblyReference.cache
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!Content\obj\x86\Debug\MathGame!Content.contentprojResolveAssemblyReference.cache
