@@ -80,8 +80,8 @@ namespace MathGame_
         string sop = "none";
         
         // The following integers are used to track and maintain round logic.
-        int num_questions = 1;
-        int pass = 1;
+        int num_questions = 10;
+        int pass = 7;
         int roundNum = 1;
         int addnum, subnum, mulnum, divnum;
 
@@ -255,7 +255,7 @@ namespace MathGame_
             skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength];
             kinect.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinect_SkeletonFrameReady);
             kinect.Start();
-            kinect.ElevationAngle = 10;
+            kinect.ElevationAngle = 5;
             if (!(System.IO.File.Exists("state.txt")))
             {
                 var v = System.IO.File.Create("state.txt");
@@ -1172,6 +1172,10 @@ namespace MathGame_
                         d = 900;
 
                     sp2.Begin();
+                    sp2.DrawString(end_round_font, "Round: ", new Vector2(0, 0), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.DrawString(end_round_font, roundNum.ToString(), new Vector2(150, 0), Microsoft.Xna.Framework.Color.Yellow);
+                    sp2.DrawString(end_round_font, "Question: ", new Vector2(300, 0), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.DrawString(end_round_font, (question_count + 1).ToString(), new Vector2(525, 0), Microsoft.Xna.Framework.Color.Yellow);
                     sp2.Draw(art, new Vector2(600, 100), Microsoft.Xna.Framework.Color.Green);
                     sp2.Draw(art, new Vector2(900, 100), Microsoft.Xna.Framework.Color.Green);
                     sp2.Draw(art, new Vector2(600, 400), Microsoft.Xna.Framework.Color.Green);
