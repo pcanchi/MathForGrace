@@ -218,13 +218,13 @@
       <Time>2013-11-26T15:46:07.4521074-05:00</Time>
     </Item>
     <Item>
-      <Source>inst.png</Source>
-      <Name>inst</Name>
+      <Source>inst2.png</Source>
+      <Name>inst2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst.xnb</Output>
-      <Time>2013-12-06T18:55:57.0968784-05:00</Time>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst2.xnb</Output>
+      <Time>2013-12-07T12:03:20.6436787-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

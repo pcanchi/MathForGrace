@@ -354,7 +354,7 @@ namespace MathGame_
             felt = Content.Load<Texture2D>("felt");
             menu = Content.Load<Texture2D>("menu");
             options = Content.Load<Texture2D>("options");
-            inst = Content.Load<Texture2D>("inst");
+            inst = Content.Load<Texture2D>("inst2");
             
             soundEngine = Content.Load<SoundEffect>("click1");
             soundEngine2 = Content.Load<SoundEffect>("question_correct");
@@ -697,7 +697,7 @@ namespace MathGame_
                 {
                     spriteBatch.Begin();
                     spriteBatch.DrawString(end_round_font, "Game Loading...", new Vector2(0, 0), Microsoft.Xna.Framework.Color.Yellow);
-                    spriteBatch.Draw(inst, new Microsoft.Xna.Framework.Rectangle(100, 100, 900, 600), Microsoft.Xna.Framework.Color.White);
+                    spriteBatch.Draw(inst, new Microsoft.Xna.Framework.Rectangle(100, 100, 1000, 600), Microsoft.Xna.Framework.Color.White);
                     count = count - 1;
                     spriteBatch.End();
                 }

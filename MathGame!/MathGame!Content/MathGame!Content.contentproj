@@ -213,8 +213,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="inst.png">
-      <Name>inst</Name>
+    <Compile Include="inst2.png">
+      <Name>inst2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
