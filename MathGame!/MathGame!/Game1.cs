@@ -15,7 +15,7 @@ using Microsoft.Kinect;
 using System.Windows.Forms;
 using System.Drawing;
 using Microsoft.VisualBasic;
-
+//TODO: TEST kinect hand input more, change black text to white.
 namespace MathGame_
 {
     /// <summary>
@@ -31,7 +31,7 @@ namespace MathGame_
         private SpriteFont end_round_font;
         private SpriteFont eq, p_font;
         private SpriteFont countdown_font;
-        Texture2D card, art, red, green, select, option, logo, felt, menu, options, arrow;
+        Texture2D card, art, red, green, select, option, logo, felt, menu, options, arrow, inst;
 
         // These variables are used to handle kinect sensor data.
         KinectSensor kinect;
@@ -99,8 +99,9 @@ namespace MathGame_
         bool up = false;
         bool scorescreen = false;
         bool catchosen = false;
+        bool instdone = false;
 
-        int count = 5;
+        int count = 20;
 
         //forms to allow user to change threshold, and # questions per round
         public Form form1 = new Form();
@@ -216,7 +217,7 @@ namespace MathGame_
             catch (FormatException ex)
             {
                 success = false;
-                form1.Text = "Invalid entry... Please enter an integer between [1,10]";
+                form1.Text = "Invalid entry... Please enter an integer between [5,10]";
             }
 
             if (success && val >= (num_questions/2) && val <= num_questions)
@@ -231,7 +232,7 @@ namespace MathGame_
             else
             {
                 //done = false;
-                form1.Text = "Invalid entry... Please enter an integer between [1,10]";
+                form1.Text = "Invalid entry... Please enter an integer between [5,10]";
             }
 
         }
@@ -258,7 +259,7 @@ namespace MathGame_
                 skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength];
                 kinect.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinect_SkeletonFrameReady);
                 kinect.Start();
-                kinect.ElevationAngle = 5;
+                kinect.ElevationAngle = 0;
            }
 
             catch(ArgumentOutOfRangeException e)
@@ -321,6 +322,7 @@ namespace MathGame_
             felt = Content.Load<Texture2D>("felt");
             menu = Content.Load<Texture2D>("menu");
             options = Content.Load<Texture2D>("options");
+            inst = Content.Load<Texture2D>("inst");
             
             soundEngine = Content.Load<SoundEffect>("click1");
             soundEngine2 = Content.Load<SoundEffect>("question_correct");
@@ -347,7 +349,7 @@ namespace MathGame_
             text1.Location = new System.Drawing.Point(0, 0);
             text1.Width = 500;
             text1.Height = 1000;
-            form1.Text = "Please Enter the desired threshold value here.";
+            form1.Text = "Please enter a value between [5,10]";
             form1.Width = 500;
             form1.Height = 500;
             form1.Controls.Add(ok1);
@@ -375,7 +377,13 @@ namespace MathGame_
         protected override void Update(GameTime gameTime)
         {
 
-            if (count == 0 && !up && !calibrated)
+            if (count == 0 && !instdone)
+            {
+                instdone = true;
+                count = 10;
+            }
+            
+            else if (count == 0 && !up && !calibrated)
             {
                 yLow = currHandy;
                 up = true;
@@ -632,7 +640,16 @@ namespace MathGame_
 
             if (!calibrated)
             {
-                if (!up)
+                if (!instdone)
+                {
+                    spriteBatch.Begin();
+                    spriteBatch.DrawString(end_round_font, "Game Loading...", new Vector2(0, 0), Microsoft.Xna.Framework.Color.Yellow);
+                    spriteBatch.Draw(inst, new Microsoft.Xna.Framework.Rectangle(100, 100, 900, 600), Microsoft.Xna.Framework.Color.White);
+                    count = count - 1;
+                    spriteBatch.End();
+                }
+                
+                else if (!up)
                 {
                     spriteBatch.Begin();
                     spriteBatch.DrawString(end_round_font, "Calibrating, please keep your hand", new Vector2(50, 100), Microsoft.Xna.Framework.Color.Black);
@@ -707,7 +724,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Yellow);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -717,7 +734,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Yellow);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -727,7 +744,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Yellow);
-                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -737,7 +754,7 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Main Menu", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Yellow);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Yellow);
                         
                     }
 
@@ -1185,10 +1202,12 @@ namespace MathGame_
                         d = 900;
 
                     sp2.Begin();
-                    sp2.DrawString(end_round_font, "Round: ", new Vector2(100, 0), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.DrawString(end_round_font, "Round: ", new Vector2(100, 0), Microsoft.Xna.Framework.Color.White);
                     sp2.DrawString(end_round_font, roundNum.ToString(), new Vector2(250, 0), Microsoft.Xna.Framework.Color.Yellow);
-                    sp2.DrawString(end_round_font, "Question: ", new Vector2(400, 0), Microsoft.Xna.Framework.Color.Blue);
+                    sp2.DrawString(end_round_font, "Question: ", new Vector2(400, 0), Microsoft.Xna.Framework.Color.White);
                     sp2.DrawString(end_round_font, (question_count + 1).ToString(), new Vector2(625, 0), Microsoft.Xna.Framework.Color.Yellow);
+                    sp2.DrawString(end_round_font, "# Correct: ", new Vector2(775, 0), Microsoft.Xna.Framework.Color.White);
+                    sp2.DrawString(end_round_font, correct_answer_count.ToString(), new Vector2(1025, 0), Microsoft.Xna.Framework.Color.Yellow);
                     sp2.Draw(art, new Vector2(600, 100), Microsoft.Xna.Framework.Color.Green);
                     sp2.Draw(art, new Vector2(900, 100), Microsoft.Xna.Framework.Color.Green);
                     sp2.Draw(art, new Vector2(600, 400), Microsoft.Xna.Framework.Color.Green);
