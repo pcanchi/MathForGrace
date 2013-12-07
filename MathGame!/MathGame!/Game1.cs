@@ -78,6 +78,7 @@ namespace MathGame_
         String cur = "none";
         string menuop = "none";
         string sop = "none";
+        string hand = "";
         
         // The following integers are used to track and maintain round logic.
         int num_questions = 10;
@@ -100,20 +101,22 @@ namespace MathGame_
         bool scorescreen = false;
         bool catchosen = false;
         bool instdone = false;
+        bool inputdone = false;
 
         int count = 20;
 
-        //forms to allow user to change threshold, and # questions per round
+        //form to allow user to change threshold, and # questions per round
         public Form form1 = new Form();
         public TextBox text1 = new TextBox();
         public Button ok1 = new Button();
         public Button cancel1 = new Button();
         bool done1 = false;
 
+        //form to allow the user to choose which hand will control the game.
         public Form form2 = new Form();
         public TextBox text2 = new TextBox();
-        public Button ok2 = new Button();
-        public Button cancel2 = new Button();
+        public Button rightHand = new Button();
+        public Button leftHand = new Button();
         bool done2 = false;
         
         public Game1()
@@ -158,10 +161,13 @@ namespace MathGame_
             }
         }
 
-
         private void TrackedSkeletonJoints(JointCollection jointCollection)
         {
-            TrackBone(jointCollection[JointType.WristRight], jointCollection[JointType.HandRight]);
+            if(hand == "r")
+                TrackBone(jointCollection[JointType.WristRight], jointCollection[JointType.HandRight]);
+            
+            else if(hand == "l")
+                TrackBone(jointCollection[JointType.WristLeft], jointCollection[JointType.HandLeft]);
         }
 
         private void TrackSkeletons()
@@ -194,6 +200,22 @@ namespace MathGame_
                 }
             }
 
+        }
+
+        public void rClick(object sender, EventArgs e)
+        {
+            hand = "r";
+            form2.Hide();
+            graphics.ToggleFullScreen();
+            inputdone = true;
+        }
+
+        public void lClick(object sender, EventArgs e)
+        {
+            hand = "l";
+            form2.Hide();
+            graphics.ToggleFullScreen();
+            inputdone = true;
         }
 
         public void c1Click(object sender, EventArgs e)
@@ -245,8 +267,17 @@ namespace MathGame_
                 graphics.ToggleFullScreen();
 
             form1.Show();
-        }  
+        }
 
+        public void showForm2()
+        {
+            if (graphics.IsFullScreen)
+                graphics.ToggleFullScreen();
+
+            form2.Show();
+            form2.BringToFront();
+        }
+        
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -293,6 +324,7 @@ namespace MathGame_
 
                 }
             }
+            
             base.Initialize();
         }
 
@@ -340,10 +372,8 @@ namespace MathGame_
 
             form1.AcceptButton = ok1;
             form1.CancelButton = cancel1;
-            form2.AcceptButton = ok2;
-            form2.CancelButton = cancel2;
-            ok1.Text = ok2.Text = "OK";
-            cancel2.Text = cancel1.Text = "Cancel";
+            ok1.Text =  "OK";
+            cancel1.Text = "Cancel";
             ok1.Location = new System.Drawing.Point(0, 100);
             cancel1.Location = new System.Drawing.Point(100, 100);
             text1.Location = new System.Drawing.Point(0, 0);
@@ -355,8 +385,26 @@ namespace MathGame_
             form1.Controls.Add(ok1);
             form1.Controls.Add(cancel1);
             form1.Controls.Add(text1);
+            form1.ControlBox = false;
             ok1.Click += new EventHandler(ok1Click);
             cancel1.Click += new EventHandler(c1Click);
+
+            rightHand.Text = "Right Hand";
+            leftHand.Text = "Left Hand";
+            leftHand.Location = new System.Drawing.Point(50, 25);
+            rightHand.Location = new System.Drawing.Point(250, 25);
+            form2.Text = "Please choose which hand controls the game";
+            form2.BackColor = System.Drawing.Color.CornflowerBlue;
+            rightHand.BackColor = System.Drawing.Color.LightGray;
+            leftHand.BackColor = System.Drawing.Color.LightGray;
+            form2.Width = 450;
+            form2.Height = 100;
+            form2.StartPosition = FormStartPosition.CenterScreen;
+            form2.Controls.Add(rightHand);
+            form2.Controls.Add(leftHand);
+            rightHand.Click += new EventHandler(rClick);
+            leftHand.Click += new EventHandler(lClick);
+            form2.ControlBox = false;
 
         }
 
@@ -377,7 +425,12 @@ namespace MathGame_
         protected override void Update(GameTime gameTime)
         {
 
-            if (count == 0 && !instdone)
+            if (!inputdone)
+            {
+                showForm2();
+            }
+            
+            else if (count == 0 && !instdone)
             {
                 instdone = true;
                 count = 10;
@@ -677,8 +730,8 @@ namespace MathGame_
                 {
                     spriteBatch.Begin();
                     spriteBatch.Draw(menu, new Vector2(450, 0), Microsoft.Xna.Framework.Color.White);
-                    spriteBatch.Draw(option, new Vector2(450, 150), Microsoft.Xna.Framework.Color.Red);
-                    spriteBatch.Draw(option, new Vector2(450, 350), Microsoft.Xna.Framework.Color.Purple);
+                    spriteBatch.Draw(option, new Vector2(450, 150), Microsoft.Xna.Framework.Color.OrangeRed);
+                    spriteBatch.Draw(option, new Vector2(450, 350), Microsoft.Xna.Framework.Color.MediumPurple);
                     spriteBatch.Draw(option, new Vector2(450, 550), Microsoft.Xna.Framework.Color.White);
                     
                     if (menuop == "none" || menuop == "e")
@@ -713,10 +766,10 @@ namespace MathGame_
                     this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
                     spriteBatch.Begin();
                     spriteBatch.Draw(options, new Microsoft.Xna.Framework.Rectangle(550, 0, 200, 100), Microsoft.Xna.Framework.Color.White);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 150, 400, 100), Microsoft.Xna.Framework.Color.Red);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 150, 400, 100), Microsoft.Xna.Framework.Color.OrangeRed);
                     spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 150, 400, 100), Microsoft.Xna.Framework.Color.LightPink);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 350, 400, 100), Microsoft.Xna.Framework.Color.Blue);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 350, 400, 100), Microsoft.Xna.Framework.Color.Purple);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 350, 400, 100), Microsoft.Xna.Framework.Color.CornflowerBlue);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 350, 400, 100), Microsoft.Xna.Framework.Color.MediumPurple);
                     //spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(450, 550, 420, 100), Microsoft.Xna.Framework.Color.Navy);
                     if (sop == "none" || sop == "b")
                     {
@@ -783,7 +836,7 @@ namespace MathGame_
                     spriteBatch.DrawString(end_round_font, pass.ToString(), new Vector2(800, 450), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, "# Questions: ", new Vector2(250, 500), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, num_questions.ToString(), new Vector2(800, 500), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(400, 600, 420, 70), Microsoft.Xna.Framework.Color.Blue);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(400, 600, 420, 70), Microsoft.Xna.Framework.Color.CornflowerBlue);
                     spriteBatch.DrawString(end_round_font, "Back to Main Menu", new Vector2(400, 600), Microsoft.Xna.Framework.Color.Yellow);
                     spriteBatch.End();
                 }
@@ -836,10 +889,10 @@ namespace MathGame_
                     sp2.Begin();
                     //sp2.Draw(select, new Vector2(200, 10), Microsoft.Xna.Framework.Color.White);
                     sp2.DrawString(p_font, "Please Select a Category", new Vector2(180, 50), Microsoft.Xna.Framework.Color.Black);
-                    sp2.Draw(option, new Vector2(215, 200), Microsoft.Xna.Framework.Color.Red);
+                    sp2.Draw(option, new Vector2(215, 200), Microsoft.Xna.Framework.Color.OrangeRed);
                     sp2.Draw(option, new Vector2(660, 200), Microsoft.Xna.Framework.Color.LightPink);
-                    sp2.Draw(option, new Vector2(215, 400), Microsoft.Xna.Framework.Color.Blue);
-                    sp2.Draw(option, new Vector2(660, 400), Microsoft.Xna.Framework.Color.Purple);
+                    sp2.Draw(option, new Vector2(215, 400), Microsoft.Xna.Framework.Color.CornflowerBlue);
+                    sp2.Draw(option, new Vector2(660, 400), Microsoft.Xna.Framework.Color.MediumPurple);
                     sp2.Draw(logo, new Vector2(450, 600), Microsoft.Xna.Framework.Color.White);
                     if (cur == "Division" || cur == "none")
                     {
