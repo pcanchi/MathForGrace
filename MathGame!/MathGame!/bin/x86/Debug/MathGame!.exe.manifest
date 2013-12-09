@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MathGame!.exe" size="35328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MathGame!.exe" size="36352">
       <assemblyIdentity name="MathGame!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Fov0EKiqleLELM2kEXivAdMzmxk=</dsig:DigestValue>
+        <dsig:DigestValue>/3yqijV8fCzZXCXKreuht/T/C+Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -125,6 +125,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>wmcgeA7pp0tJdeMDmmCvEKV9lxk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\balloons.xnb" size="1637687">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>qhV4a8FcM7/1IQvjS+b5awB7L9o=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\card.xnb" size="1069259">
@@ -181,13 +190,31 @@
       <dsig:DigestValue>eJPXPFGbNM7Zs6JzEWBPm6Ehsd8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\inst2.xnb" size="2567095">
+  <file name="Content\inst.xnb" size="4163587">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>gdAz8xWATqQDikKkuy5EovLwGIY=</dsig:DigestValue>
+      <dsig:DigestValue>R9SipKpdlBx1hiyUwI9W55a0+vg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\inst3.xnb" size="8080747">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>rR1OygcooqVq5LIgbswtZ+2yro0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\inst4.xnb" size="4487407">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>tGm8Uq2mvNcDLs6S2ZwJ54On3vo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\loading.xnb" size="332475">

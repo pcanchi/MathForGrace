@@ -218,13 +218,40 @@
       <Time>2013-11-26T15:46:07.4521074-05:00</Time>
     </Item>
     <Item>
-      <Source>inst2.png</Source>
-      <Name>inst2</Name>
+      <Source>inst.png</Source>
+      <Name>inst</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst2.xnb</Output>
-      <Time>2013-12-07T12:03:20.6436787-05:00</Time>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst.xnb</Output>
+      <Time>2013-12-08T18:57:18.7852274-05:00</Time>
+    </Item>
+    <Item>
+      <Source>inst3.png</Source>
+      <Name>inst3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst3.xnb</Output>
+      <Time>2013-12-08T19:00:43.756497-05:00</Time>
+    </Item>
+    <Item>
+      <Source>inst4.png</Source>
+      <Name>inst4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst4.xnb</Output>
+      <Time>2013-12-08T19:18:06.838243-05:00</Time>
+    </Item>
+    <Item>
+      <Source>balloons.png</Source>
+      <Name>balloons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\balloons.xnb</Output>
+      <Time>2013-12-08T19:36:38.3662804-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

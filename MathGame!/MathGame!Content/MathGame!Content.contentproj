@@ -213,8 +213,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="inst2.png">
-      <Name>inst2</Name>
+    <Compile Include="inst.png">
+      <Name>inst</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="inst3.png">
+      <Name>inst3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="inst4.png">
+      <Name>inst4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="balloons.png">
+      <Name>balloons</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

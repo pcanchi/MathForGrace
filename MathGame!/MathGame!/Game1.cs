@@ -31,7 +31,7 @@ namespace MathGame_
         private SpriteFont end_round_font;
         private SpriteFont eq, p_font;
         private SpriteFont countdown_font;
-        Texture2D card, art, red, green, select, option, logo, felt, menu, options, arrow, inst;
+        Texture2D card, art, red, green, select, option, logo, felt, menu, options, arrow, inst, balloons;
 
         // These variables are used to handle kinect sensor data.
         KinectSensor kinect;
@@ -102,8 +102,9 @@ namespace MathGame_
         bool catchosen = false;
         bool instdone = false;
         bool inputdone = false;
+        bool donescreen = false;
 
-        int count = 20;
+        int count = 999;
 
         //form to allow user to change threshold, and # questions per round
         public Form form1 = new Form();
@@ -208,6 +209,7 @@ namespace MathGame_
             form2.Hide();
             graphics.ToggleFullScreen();
             inputdone = true;
+            count = 30;
         }
 
         public void lClick(object sender, EventArgs e)
@@ -216,6 +218,7 @@ namespace MathGame_
             form2.Hide();
             graphics.ToggleFullScreen();
             inputdone = true;
+            count = 30;
         }
 
         public void c1Click(object sender, EventArgs e)
@@ -309,7 +312,7 @@ namespace MathGame_
             {
                 using (StreamReader sr = new StreamReader("state.txt"))
                 {
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         string line = sr.ReadLine();
                         if (i == 0)
@@ -318,8 +321,10 @@ namespace MathGame_
                             subnum = Convert.ToInt32(line);
                         else if (i == 2)
                             mulnum = Convert.ToInt32(line);
-                        else
+                        else if (i == 3)
                             divnum = Convert.ToInt32(line);
+                        else
+                            pass = Convert.ToInt32(line);
                     }
 
                 }
@@ -354,7 +359,8 @@ namespace MathGame_
             felt = Content.Load<Texture2D>("felt");
             menu = Content.Load<Texture2D>("menu");
             options = Content.Load<Texture2D>("options");
-            inst = Content.Load<Texture2D>("inst2");
+            inst = Content.Load<Texture2D>("inst4");
+            balloons = Content.Load<Texture2D>("balloons");
             
             soundEngine = Content.Load<SoundEffect>("click1");
             soundEngine2 = Content.Load<SoundEffect>("question_correct");
@@ -475,7 +481,7 @@ namespace MathGame_
                 {
                     divnum = roundNum;
                 }
-                string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString() };
+                string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString(), pass.ToString() };
                 System.IO.File.WriteAllLines("state.txt", lines);
                 kinect.Dispose();
                 this.Exit();
@@ -517,6 +523,30 @@ namespace MathGame_
 
                 choice = "";
                 current_answer_displayed = -1;
+            }
+            else if (currHandy >= cali && donescreen)
+            {
+                if (cat == "Addition")
+                {
+                    addnum = roundNum;
+                }
+                else if (cat == "Subtraction")
+                {
+                    subnum = roundNum;
+                }
+                else if (cat == "Multiplication")
+                {
+                    mulnum = roundNum;
+                }
+                else if (cat == "Division")
+                {
+                    divnum = roundNum;
+                }
+                string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString(), pass.ToString() };
+                System.IO.File.WriteAllLines("state.txt", lines);
+                kinect.Dispose();
+                this.Exit();
+                
             }
 
             else if (currHandy >= cali && decision == true && hdown && calibrated && !gomain && catchosen)
@@ -566,7 +596,7 @@ namespace MathGame_
                     {
                         divnum = roundNum;
                     }
-                    string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString() };
+                    string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString(), pass.ToString() };
                     System.IO.File.WriteAllLines("state.txt", lines);
                     kinect.Dispose();
                     this.Exit();
@@ -621,7 +651,7 @@ namespace MathGame_
                     else if (cat == "Division")
                         divnum = roundNum;
 
-                    string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString() };
+                    string[] lines = { addnum.ToString(), subnum.ToString(), mulnum.ToString(), divnum.ToString(), pass.ToString() };
                     System.IO.File.WriteAllLines("state.txt", lines);
 
                     kinect.Dispose();
@@ -632,7 +662,7 @@ namespace MathGame_
                 else if (menuop == "o")
                 {
                     settings = true;
-                    
+
                 }
                 menuop = "e";
             }
@@ -673,6 +703,7 @@ namespace MathGame_
 
             else if (currHandy >= cali && gomain && hdown && !settings && scorescreen && calibrated)
             {
+                hdown = false;
                 settings = true;
                 scorescreen = false;
             }
@@ -828,10 +859,24 @@ namespace MathGame_
                     spriteBatch.DrawString(end_round_font, "Subtraction:", new Vector2(250, 250), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, "Multiplication:", new Vector2(250, 300), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, "Division:", new Vector2(250, 350), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(end_round_font, addnum.ToString(), new Vector2(800, 200), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(end_round_font, subnum.ToString(), new Vector2(800, 250), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(end_round_font, mulnum.ToString(), new Vector2(800, 300), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(end_round_font, divnum.ToString(), new Vector2(800, 350), Microsoft.Xna.Framework.Color.Black);
+                    if(addnum < 11)
+                        spriteBatch.DrawString(end_round_font, addnum.ToString(), new Vector2(800, 200), Microsoft.Xna.Framework.Color.Black);
+                    else
+                        spriteBatch.DrawString(end_round_font, "Category Mastered!", new Vector2(800, 200), Microsoft.Xna.Framework.Color.Black);
+                    
+                    if(subnum < 11)
+                        spriteBatch.DrawString(end_round_font, subnum.ToString(), new Vector2(800, 250), Microsoft.Xna.Framework.Color.Black);
+                    else
+                        spriteBatch.DrawString(end_round_font, "Category Mastered!", new Vector2(800, 250), Microsoft.Xna.Framework.Color.Black);
+                    
+                    if(mulnum < 11)
+                        spriteBatch.DrawString(end_round_font, mulnum.ToString(), new Vector2(800, 300), Microsoft.Xna.Framework.Color.Black);
+                    else
+                        spriteBatch.DrawString(end_round_font, "Category Mastered!", new Vector2(800, 300), Microsoft.Xna.Framework.Color.Black);
+                    if(divnum < 11)
+                        spriteBatch.DrawString(end_round_font, divnum.ToString(), new Vector2(800, 350), Microsoft.Xna.Framework.Color.Black);
+                    else
+                        spriteBatch.DrawString(end_round_font, "Category Mastered!", new Vector2(800, 350), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, "Threshold: ", new Vector2(250, 450), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, pass.ToString(), new Vector2(800, 450), Microsoft.Xna.Framework.Color.Black);
                     spriteBatch.DrawString(end_round_font, "# Questions: ", new Vector2(250, 500), Microsoft.Xna.Framework.Color.Black);
@@ -1020,10 +1065,15 @@ namespace MathGame_
                     sp2.End();
                 }
 
-                else if (roundNum > 10)
+                else if (roundNum == 11)
                 {
+                    donescreen = true;
                     sp2.Begin();
-                    sp2.DrawString(end_round_font, "Category Mastered!", new Vector2(450, 450), Microsoft.Xna.Framework.Color.Black);
+                    sp2.DrawString(end_round_font, "Category Mastered!", new Vector2(450, 250), Microsoft.Xna.Framework.Color.Black);
+                    sp2.Draw(option, new Microsoft.Xna.Framework.Rectangle(450, 350, 450, 100), Microsoft.Xna.Framework.Color.Orange);
+                    sp2.DrawString(end_round_font, "Exit Game", new Vector2(450, 375), Microsoft.Xna.Framework.Color.Yellow);
+                    sp2.Draw(balloons, new Microsoft.Xna.Framework.Rectangle(200, 300, 200, 200), Microsoft.Xna.Framework.Color.White);
+                    sp2.Draw(balloons, new Microsoft.Xna.Framework.Rectangle(950, 300, 200, 200), Microsoft.Xna.Framework.Color.White);
                     sp2.End();
                 }
 
@@ -1093,7 +1143,7 @@ namespace MathGame_
                             {
                                 pass_r.Play();
                                 spriteBatch.Begin();
-                                spriteBatch.DrawString(end_round_font, "Round " + roundNum + " Complete", new Vector2(100, 100), Microsoft.Xna.Framework.Color.Black);
+                                spriteBatch.DrawString(end_round_font, "Round " + roundNum + "/10 Complete", new Vector2(100, 100), Microsoft.Xna.Framework.Color.Black);
                                 pass_fail_str = "You Won :)";
                                 roundNum = roundNum + 1;
                                 question_count = 0;
@@ -1115,7 +1165,7 @@ namespace MathGame_
                                     fail_r.Pause();
 
                                 spriteBatch.Begin();
-                                spriteBatch.DrawString(end_round_font, "Round " + roundNum + " Complete", new Vector2(100, 100), Microsoft.Xna.Framework.Color.Black);
+                                spriteBatch.DrawString(end_round_font, "Round " + roundNum + "/10 Complete", new Vector2(100, 100), Microsoft.Xna.Framework.Color.Black);
                                 decision = true;
                                 pass_fail_str = "You Lost :(";
                                 //  game_over_flag = true;
