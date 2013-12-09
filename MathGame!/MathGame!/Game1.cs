@@ -54,6 +54,7 @@ namespace MathGame_
         float timer = 5;
         const float TIMERCLOCK1 = 3;
         const float TIMERCLOCK2 = 3;
+        double timer_val = 3.0;
         
         bool time_flag1 = true; //initialized to true, will work like an on/off switch
         bool answer_flag = false; //initialized to false, will work like an on/off switch
@@ -81,8 +82,8 @@ namespace MathGame_
         string hand = "";
         
         // The following integers are used to track and maintain round logic.
-        int num_questions = 10;
-        int pass = 7;
+        int num_questions = 3;
+        int pass = 2;
         int roundNum = 1;
         int addnum, subnum, mulnum, divnum;
 
@@ -119,6 +120,12 @@ namespace MathGame_
         public Button rightHand = new Button();
         public Button leftHand = new Button();
         bool done2 = false;
+
+        public Form form3 = new Form();
+        public TextBox text3 = new TextBox();
+        public Button ok3 = new Button();
+        public Button cancel3 = new Button();
+        bool done3 = false;
         
         public Game1()
         {
@@ -209,7 +216,7 @@ namespace MathGame_
             form2.Hide();
             graphics.ToggleFullScreen();
             inputdone = true;
-            count = 30;
+            count = 2;
         }
 
         public void lClick(object sender, EventArgs e)
@@ -218,7 +225,7 @@ namespace MathGame_
             form2.Hide();
             graphics.ToggleFullScreen();
             inputdone = true;
-            count = 30;
+            count = 2;
         }
 
         public void c1Click(object sender, EventArgs e)
@@ -226,6 +233,14 @@ namespace MathGame_
             cali = (yLow + yHigh) / (float)2.0;
             graphics.ToggleFullScreen();
             form1.Hide();
+
+        }
+
+        public void c3Click(object sender, EventArgs e)
+        {
+            cali = (yLow + yHigh) / (float)2.0;
+            graphics.ToggleFullScreen();
+            form3.Hide();
 
         }
 
@@ -262,6 +277,39 @@ namespace MathGame_
 
         }
 
+        public void ok3Click(object sender, EventArgs e)
+        {
+            string newval = text3.Text;
+            bool success = true;
+            int val = -1;
+            try
+            {
+                val = Convert.ToInt32(newval);
+            }
+
+            catch (FormatException ex)
+            {
+                success = false;
+                form3.Text = "Invalid entry... Please enter an integer between [2,5]";
+            }
+
+            if (success && val >= 2 && val <= 5)
+            {
+                done3 = true;
+                timer_val = Convert.ToDouble(val);
+                form3.Hide();
+                graphics.ToggleFullScreen();
+                cali = (yLow + yHigh) / (float)2.0;
+            }
+
+            else
+            {
+                //done = false;
+                form3.Text = "Invalid entry... Please enter an integer between [2,5]";
+            }
+
+        }
+
         public void showForm1()
         {
             cali = 9999;
@@ -280,6 +328,19 @@ namespace MathGame_
             form2.Show();
             form2.BringToFront();
         }
+
+        public void showForm3()
+        {
+            cali = 9999;
+
+            if (graphics.IsFullScreen)
+                graphics.ToggleFullScreen();
+
+            form3.Show();
+            form3.BringToFront();
+        }
+
+        
         
         protected override void Initialize()
         {
@@ -378,8 +439,13 @@ namespace MathGame_
 
             form1.AcceptButton = ok1;
             form1.CancelButton = cancel1;
-            ok1.Text =  "OK";
+            form3.AcceptButton = ok3;
+            form3.CancelButton = cancel3;
+            ok1.Text = "OK";
             cancel1.Text = "Cancel";
+            ok3.Text = "OK";
+            cancel3.Text = "Cancel";
+           
             ok1.Location = new System.Drawing.Point(0, 100);
             cancel1.Location = new System.Drawing.Point(100, 100);
             text1.Location = new System.Drawing.Point(0, 0);
@@ -394,6 +460,22 @@ namespace MathGame_
             form1.ControlBox = false;
             ok1.Click += new EventHandler(ok1Click);
             cancel1.Click += new EventHandler(c1Click);
+
+            ok3.Location = new System.Drawing.Point(0, 100);
+            cancel3.Location = new System.Drawing.Point(100, 100);
+            text3.Location = new System.Drawing.Point(0, 0);
+            text3.Width = 500;
+            text3.Height = 1000;
+            form3.Text = "Please enter a value between [2,5]";
+            form3.Width = 500;
+            form3.Height = 500;
+            form3.Controls.Add(ok3);
+            form3.Controls.Add(cancel3);
+            form3.Controls.Add(text3);
+            form3.ControlBox = false;
+            ok3.Click += new EventHandler(ok3Click);
+            cancel3.Click += new EventHandler(c3Click);
+
 
             rightHand.Text = "Right Hand";
             leftHand.Text = "Left Hand";
@@ -694,6 +776,12 @@ namespace MathGame_
                     showForm1();
                 }
 
+                else if (sop == "timer")
+                {
+                    showForm3();
+
+                }
+
                 else if (sop == "n")
                 {
                 }
@@ -736,17 +824,17 @@ namespace MathGame_
                 else if (!up)
                 {
                     spriteBatch.Begin();
-                    spriteBatch.DrawString(end_round_font, "Calibrating, please keep your hand", new Vector2(50, 100), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(end_round_font, "at a rest position..", new Vector2(50, 150), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(countdown_font, count.ToString(), new Vector2(500, 150), Microsoft.Xna.Framework.Color.Black);
+                    spriteBatch.DrawString(end_round_font, "Calibrating, please keep your hand", new Vector2(50, 100), Microsoft.Xna.Framework.Color.White);
+                    spriteBatch.DrawString(end_round_font, "at a rest position..", new Vector2(50, 150), Microsoft.Xna.Framework.Color.White);
+                    spriteBatch.DrawString(countdown_font, count.ToString(), new Vector2(500, 150), Microsoft.Xna.Framework.Color.White);
                     count = count - 1;
                     spriteBatch.End();
                 }
                 else
                 {
                     spriteBatch.Begin();
-                    spriteBatch.DrawString(end_round_font, "Now, please raise your hand..", new Vector2(50, 100), Microsoft.Xna.Framework.Color.Black);
-                    spriteBatch.DrawString(countdown_font, count.ToString(), new Vector2(500, 150), Microsoft.Xna.Framework.Color.Black);
+                    spriteBatch.DrawString(end_round_font, "Now, please raise your hand..", new Vector2(50, 100), Microsoft.Xna.Framework.Color.White);
+                    spriteBatch.DrawString(countdown_font, count.ToString(), new Vector2(500, 150), Microsoft.Xna.Framework.Color.White);
                     count = count - 1;
                     spriteBatch.End();
 
@@ -756,7 +844,7 @@ namespace MathGame_
 
             else if (calibrated && gomain)
             {
-                this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                 if (!settings && !scorescreen)
                 {
                     spriteBatch.Begin();
@@ -794,13 +882,14 @@ namespace MathGame_
 
                 else if (settings)
                 {
-                    this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                    this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                     spriteBatch.Begin();
                     spriteBatch.Draw(options, new Microsoft.Xna.Framework.Rectangle(550, 0, 200, 100), Microsoft.Xna.Framework.Color.White);
                     spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 150, 400, 100), Microsoft.Xna.Framework.Color.OrangeRed);
                     spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 150, 400, 100), Microsoft.Xna.Framework.Color.LightPink);
                     spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(150, 350, 400, 100), Microsoft.Xna.Framework.Color.CornflowerBlue);
                     spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(750, 350, 400, 100), Microsoft.Xna.Framework.Color.MediumPurple);
+                    spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(450, 550, 400, 100), Microsoft.Xna.Framework.Color.LightBlue);
                     //spriteBatch.Draw(option, new Microsoft.Xna.Framework.Rectangle(450, 550, 420, 100), Microsoft.Xna.Framework.Color.Navy);
                     if (sop == "none" || sop == "b")
                     {
@@ -808,7 +897,8 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Yellow);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Edit Timer", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(450, 570), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -818,7 +908,8 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Yellow);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Edit Timer", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(450, 570), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
@@ -828,19 +919,36 @@ namespace MathGame_
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Yellow);
-                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Edit Timer", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(450, 570), Microsoft.Xna.Framework.Color.Black);
                         
                     }
 
                     else if (sop == "t")
                     {
+
+                        sop = "timer";
+                        spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Edit Timer", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Yellow);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(450, 570), Microsoft.Xna.Framework.Color.Black);
+
+
+                    }
+
+                    else if (sop == "timer")
+                    {
                         sop = "b";
                         spriteBatch.DrawString(end_round_font, "Reset Game", new Vector2(150, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "View Progress", new Vector2(750, 170), Microsoft.Xna.Framework.Color.Black);
                         spriteBatch.DrawString(end_round_font, "Edit Threshold", new Vector2(150, 370), Microsoft.Xna.Framework.Color.Black);
-                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Yellow);
+                        spriteBatch.DrawString(end_round_font, "Edit Timer", new Vector2(750, 370), Microsoft.Xna.Framework.Color.Black);
+                        spriteBatch.DrawString(end_round_font, "Go Back", new Vector2(450, 570), Microsoft.Xna.Framework.Color.Yellow);
                         
                     }
+
+                    
 
                      
                         
@@ -933,7 +1041,7 @@ namespace MathGame_
 
                     sp2.Begin();
                     //sp2.Draw(select, new Vector2(200, 10), Microsoft.Xna.Framework.Color.White);
-                    sp2.DrawString(p_font, "Please Select a Category", new Vector2(180, 50), Microsoft.Xna.Framework.Color.Black);
+                    sp2.DrawString(p_font, "Please Select a Category", new Vector2(180, 50), Microsoft.Xna.Framework.Color.White);
                     sp2.Draw(option, new Vector2(215, 200), Microsoft.Xna.Framework.Color.OrangeRed);
                     sp2.Draw(option, new Vector2(660, 200), Microsoft.Xna.Framework.Color.LightPink);
                     sp2.Draw(option, new Vector2(215, 400), Microsoft.Xna.Framework.Color.CornflowerBlue);
@@ -978,7 +1086,7 @@ namespace MathGame_
 
                     }
                     sp2.End();
-                    this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                    this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                 }
 
                 else if (start && roundNum <= 10)
@@ -1129,7 +1237,7 @@ namespace MathGame_
                         if (roundcomplete)
                         {
                             roundcomplete = false;
-                            this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                            this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                         }
                         //Signal end of round
                         //calculate and display score!
@@ -1154,7 +1262,7 @@ namespace MathGame_
                                 spriteBatch.DrawString(end_round_font, pass_fail_str, new Vector2(100, 200), Microsoft.Xna.Framework.Color.Black);
                                 spriteBatch.DrawString(end_round_font, results_str, new Vector2(100, 300), Microsoft.Xna.Framework.Color.Black);
                                 spriteBatch.End();
-                                this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                                this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                             }
                             else
                             {
@@ -1205,7 +1313,7 @@ namespace MathGame_
                                 spriteBatch.DrawString(end_round_font, pass_fail_str, new Vector2(100, 200), Microsoft.Xna.Framework.Color.Black);
                                 spriteBatch.DrawString(end_round_font, results_str, new Vector2(100, 300), Microsoft.Xna.Framework.Color.Black);
                                 spriteBatch.End();
-                                this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                                this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                             }
                         }
 
@@ -1418,7 +1526,7 @@ namespace MathGame_
 
                     }
                     sp2.End();
-                    this.TargetElapsedTime = TimeSpan.FromSeconds(300.0f / 100.0f);
+                    this.TargetElapsedTime = TimeSpan.FromSeconds(timer_val);
                 }
             }
         }
