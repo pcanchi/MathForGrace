@@ -265,6 +265,7 @@ namespace MathGame_
                 done1 = true;
                 pass = val;
                 form1.Hide();
+                form1.Text = "Please enter an integer between [5,10]";
                 graphics.ToggleFullScreen();
                 cali = (yLow + yHigh) / (float)2.0;
             }
@@ -298,6 +299,7 @@ namespace MathGame_
                 done3 = true;
                 timer_val = Convert.ToDouble(val);
                 form3.Hide();
+                form3.Text = "Please enter an integer between [2,5]";
                 graphics.ToggleFullScreen();
                 cali = (yLow + yHigh) / (float)2.0;
             }
