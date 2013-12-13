@@ -65,3 +65,4 @@ C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\C
 C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst3.xnb
 C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\inst4.xnb
 C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\balloons.xnb
+C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\instfinal.xnb

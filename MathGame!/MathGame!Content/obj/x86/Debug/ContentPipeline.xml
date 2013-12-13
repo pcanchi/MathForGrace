@@ -253,6 +253,15 @@
       <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\balloons.xnb</Output>
       <Time>2013-12-08T19:36:38.3662804-05:00</Time>
     </Item>
+    <Item>
+      <Source>instfinal.png</Source>
+      <Name>instfinal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Pawan\Documents\GitHub\MathForGrace\MathGame!\MathGame!\bin\x86\Debug\Content\instfinal.xnb</Output>
+      <Time>2013-12-10T23:04:00.3912342-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

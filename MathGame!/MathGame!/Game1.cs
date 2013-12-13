@@ -15,7 +15,7 @@ using Microsoft.Kinect;
 using System.Windows.Forms;
 using System.Drawing;
 using Microsoft.VisualBasic;
-//TODO: TEST kinect hand input more, change black text to white.
+
 namespace MathGame_
 {
     /// <summary>
@@ -82,8 +82,8 @@ namespace MathGame_
         string hand = "";
         
         // The following integers are used to track and maintain round logic.
-        int num_questions = 3;
-        int pass = 2;
+        int num_questions = 10;
+        int pass = 7;
         int roundNum = 1;
         int addnum, subnum, mulnum, divnum;
 
@@ -216,7 +216,7 @@ namespace MathGame_
             form2.Hide();
             graphics.ToggleFullScreen();
             inputdone = true;
-            count = 2;
+            count = 30;
         }
 
         public void lClick(object sender, EventArgs e)
@@ -225,7 +225,7 @@ namespace MathGame_
             form2.Hide();
             graphics.ToggleFullScreen();
             inputdone = true;
-            count = 2;
+            count = 30;
         }
 
         public void c1Click(object sender, EventArgs e)
@@ -257,15 +257,15 @@ namespace MathGame_
             catch (FormatException ex)
             {
                 success = false;
-                form1.Text = "Invalid entry... Please enter an integer between [5,10]";
+                form1.Text = "Invalid entry... Please enter an integer between [" + Math.Ceiling((double)num_questions/2) + "," + num_questions.ToString() + "]";
             }
 
-            if (success && val >= (num_questions/2) && val <= num_questions)
+            if (success && val >= Math.Ceiling((double)num_questions/2.0) && val <= num_questions)
             {
                 done1 = true;
                 pass = val;
                 form1.Hide();
-                form1.Text = "Please enter an integer between [5,10]";
+                form1.Text = "Please enter an integer between [" + Math.Ceiling((double)num_questions / 2) + "," + num_questions.ToString() + "]";
                 graphics.ToggleFullScreen();
                 cali = (yLow + yHigh) / (float)2.0;
             }
@@ -273,7 +273,7 @@ namespace MathGame_
             else
             {
                 //done = false;
-                form1.Text = "Invalid entry... Please enter an integer between [5,10]";
+                form1.Text = "Invalid entry... Please enter an integer between [" + Math.Ceiling((double)num_questions / 2) + "," + num_questions.ToString() + "]";
             }
 
         }
@@ -422,7 +422,7 @@ namespace MathGame_
             felt = Content.Load<Texture2D>("felt");
             menu = Content.Load<Texture2D>("menu");
             options = Content.Load<Texture2D>("options");
-            inst = Content.Load<Texture2D>("inst4");
+            inst = Content.Load<Texture2D>("instfinal");
             balloons = Content.Load<Texture2D>("balloons");
             
             soundEngine = Content.Load<SoundEffect>("click1");
@@ -453,7 +453,7 @@ namespace MathGame_
             text1.Location = new System.Drawing.Point(0, 0);
             text1.Width = 500;
             text1.Height = 1000;
-            form1.Text = "Please enter a value between [5,10]";
+            form1.Text = "Please enter an integer between [" + Math.Ceiling((double)num_questions / 2) + "," + num_questions.ToString() + "]";
             form1.Width = 500;
             form1.Height = 500;
             form1.Controls.Add(ok1);
@@ -763,6 +763,10 @@ namespace MathGame_
                 else if (sop == "r")
                 {
                     mulnum = addnum = divnum = subnum = roundNum = 1;
+                    if (num_questions == 10)
+                        pass = 7;
+                    else
+                        pass = 3;
                     reset_m.Play();
                     settings = false;
                 }
@@ -818,7 +822,7 @@ namespace MathGame_
                 {
                     spriteBatch.Begin();
                     spriteBatch.DrawString(end_round_font, "Game Loading...", new Vector2(0, 0), Microsoft.Xna.Framework.Color.Yellow);
-                    spriteBatch.Draw(inst, new Microsoft.Xna.Framework.Rectangle(100, 100, 1000, 600), Microsoft.Xna.Framework.Color.White);
+                    spriteBatch.Draw(inst, new Microsoft.Xna.Framework.Rectangle(100, 50, 1000, 700), Microsoft.Xna.Framework.Color.White);
                     count = count - 1;
                     spriteBatch.End();
                 }
